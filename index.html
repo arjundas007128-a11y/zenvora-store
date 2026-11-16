@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="ZENVORA — Shop smart. Live better.">
+  <title>ZENVORA | Shop Smart</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="#">ZENVORA<span>.</span><small>SHOP SMART. LIVE BETTER.</small></a>
+  <nav><a href="#shop">Shop</a><a href="#orders">My Orders</a><a href="#account">Account</a><a href="admin.html">Admin</a></nav>
+  <button id="cartButton" class="cart-button">Cart <span id="cartCount">0</span></button>
+</header>
+<section class="hero">
+  <div><p class="eyebrow">NEW SEASON • NEW STYLE</p><h1>Find your<br><em>everyday</em> style.</h1>
+  <p>Discover fashion and accessories made for your next move.</p><a class="primary-link" href="#shop">Explore collection</a></div>
+  <div class="hero-art"><div class="hero-circle"></div><div class="hero-label">Z / 01<br><small>THE NEW EDIT</small></div></div>
+</section>
+<main>
+  <section id="shop" class="section">
+    <div class="section-heading"><div><p class="eyebrow">CURATED FOR YOU</p><h2>Shop collection</h2></div>
+      <input id="searchInput" class="search" type="search" placeholder="Search products..." aria-label="Search products">
+    </div>
+    <div id="categories" class="category-list"></div>
+    <div id="productGrid" class="product-grid"><p>Loading products…</p></div>
+  </section>
+
+  <section id="account" class="section account-section">
+    <div><p class="eyebrow">YOUR ZENVORA</p><h2>Account</h2><p class="muted">Sign in to place orders and see your order history.</p></div>
+    <form id="authForm" class="panel form-panel">
+      <label>Email<input id="email" type="email" required autocomplete="email" placeholder="you@example.com"></label>
+      <label>Password<input id="password" type="password" required minlength="8" autocomplete="current-password" placeholder="At least 8 characters"></label>
+      <div class="button-row"><button class="primary" type="submit" id="loginButton">Sign in</button><button class="secondary" type="button" id="signupButton">Create account</button></div>
+      <p id="authMessage" class="message" role="status"></p>
+      <button id="logoutButton" type="button" class="text-button hidden">Sign out</button>
+    </form>
+  </section>
+
+  <section id="orders" class="section">
+    <div class="section-heading"><div><p class="eyebrow">UPDATES</p><h2>My orders</h2></div><button id="refreshOrders" class="secondary">Refresh</button></div>
+    <div id="ordersList" class="panel"><p class="muted">Sign in to view your orders.</p></div>
+  </section>
+</main>
+
+<div id="cartDrawer" class="drawer hidden" aria-label="Shopping cart">
+  <div class="drawer-head"><h2>Your cart</h2><button id="closeCart" class="icon-button" aria-label="Close cart">✕</button></div>
+  <div id="cartItems"></div>
+  <div class="cart-total"><span>Total</span><strong id="cartTotal">₹0</strong></div>
+  <form id="checkoutForm" class="checkout-form">
+    <label>Full name<input id="customerName" required maxlength="80" placeholder="Your name"></label>
+    <label>Phone number<input id="phone" required inputmode="tel" pattern="[0-9 +()-]{8,18}" placeholder="Your contact number"></label>
+    <label>Delivery address<textarea id="address" required maxlength="500" rows="3" placeholder="House, street, city, PIN"></textarea></label>
+    <label>Payment method<select id="paymentMethod"><option value="COD">Cash on Delivery</option><option value="UPI">UPI (manual payment)</option></select></label>
+    <p id="upiNote" class="muted hidden">After placing the order, follow the UPI instructions shown by the store. Your order remains pending until payment is verified.</p>
+    <button class="primary full" type="submit">Place order</button>
+    <p id="checkoutMessage" class="message" role="status"></p>
+  </form>
+</div>
+<div id="toast" class="toast" role="status"></div>
+<footer><a class="brand" href="#">ZENVORA<span>.</span></a><p>Shop smart. Live better.</p><small>© <span id="year"></span> ZENVORA. Demo store starter.</small></footer>
+</body></html>
